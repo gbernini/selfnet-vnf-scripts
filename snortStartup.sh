@@ -40,7 +40,7 @@ if [ -z ${snort} ]; then
 	exit 1
 fi
 
-ping -c 1 -I $interface 8.8.8.8 > ping.out
+ping -c 1 -I $interface 10.0.255.1 > ping.out
 
 #set Snort VM hostname
 name=`echo "$hostname" | awk '{print tolower($0)}'`

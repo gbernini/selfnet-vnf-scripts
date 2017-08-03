@@ -39,7 +39,7 @@ else
 	echo "C&C server subnet ${CCSUB} not needed. HNet VNF is running with a single vNIC"
 fi
 
-java -jar /home/nextworks/ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -port ${LOCALPORT} -v ${VERBOSE} ${CCIP} &
+java -jar /home/nextworks/ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -v ${VERBOSE} ${CCIP} &
 
 sleep 1
 

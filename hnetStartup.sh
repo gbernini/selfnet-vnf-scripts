@@ -12,7 +12,7 @@ for iface in `ls /sys/class/net`; do
 done
 echo "HONEYNET NIC: ${interface}"
 
-ping -c 1 -I $interface 8.8.8.8 > ping.out
+ping -c 1 -I $interface 10.0.255.1 > ping.out
 
 name=`echo "$hostname" | awk '{print tolower($0)}'`
 

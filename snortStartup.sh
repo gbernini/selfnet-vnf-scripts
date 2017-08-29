@@ -2,11 +2,22 @@
 
 interface=ens3
 
+FIRST_S=$(echo $ap_provider_net| cut -d'.' -f 1)
+SECOND_S=$(echo $ap_provider_net| cut -d'.' -f 2)
+THIRD_S=$(echo $ap_provider_net| cut -d'.' -f 3)
+sniffNet=$FIRST_S.$SECOND_S.$THIRD_S.0
+
 echo "GETTING SNIFFING NIC ... "
 for iface in `ls /sys/class/net`; do
         ip=`ifconfig $iface | grep "inet" | grep -v inet6 | awk -F ":" '/addr/ {print $2}'`
         ipSecco=`echo $ip | awk '{print $1}'`
-        if [[ ${ap_provider_net} == $ipSecco ]]; then
+
+        FIRST=$(echo $ipSecco| cut -d'.' -f 1)
+        SECOND=$(echo $ipSecco| cut -d'.' -f 2)
+        THIRD=$(echo $ipSecco| cut -d'.' -f 3)
+        ipSeccoNet=$FIRST.$SECOND.$THIRD.0
+        # do the check among networks rather than IPs
+        if [[ ${sniffNet} == $ipSeccoNet ]]; then
                 interface=$iface
         fi
 done

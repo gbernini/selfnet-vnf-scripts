@@ -1,12 +1,25 @@
 #!/bin/bash
 
-#set default route to snort_internal_net gw
-
+#get gw
 FIRST_S=$(echo $ap_provider_net| cut -d'.' -f 1)
 SECOND_S=$(echo $ap_provider_net| cut -d'.' -f 2)
 THIRD_S=$(echo $ap_provider_net| cut -d'.' -f 3)
 
 GW_DFLT=$FIRST_S.$SECOND_S.$THIRD_S.1
+
+#set ip for ens4 -> ap_provider_net
+sed -i "s/auto ens4/#auto ens4/g" /etc/network/interfaces
+
+echo "auto ens4" >> /etc/network/interfaces
+echo "iface ens4 inet static" >> /etc/network/interfaces
+echo "address ${ap_provider_net}" >> /etc/network/interfaces
+echo "netmask 255.255.255.0" >> /etc/network/interfaces
+echo "gateway ${GW_DFLT}" >> /etc/network/interfaces
+
+ifdown ens4
+ifup ens4
+
+#set default route to snort_internal_net gw
 GW_VM=$(ip route | grep "default" | awk ' {print $3}')
 
 echo "Setting default route to gateway: $GW_DFLT"

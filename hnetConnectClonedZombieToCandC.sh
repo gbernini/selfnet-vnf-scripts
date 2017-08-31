@@ -51,7 +51,7 @@ if [ -z ${DELETE} ]; then
 
 	sleep 1
 
-	zombie=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -port ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
+	zombie=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -v ${VERBOSE} ${CCIP}"`
 
 	if [ -z ${zombie} ]; then
  		(>&2 echo "HNet app configuration failure.")

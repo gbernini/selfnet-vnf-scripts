@@ -8,6 +8,8 @@ THIRD_S=$(echo $ap_provider_net| cut -d'.' -f 3)
 GW_DFLT=$FIRST_S.$SECOND_S.$THIRD_S.1
 
 #set ip for ens4 -> ap_provider_net
+echo "Setting IP to ens4 interface: $ap_provider_net"
+
 sed -i "s/auto ens4/#auto ens4/g" /etc/network/interfaces
 
 echo "auto ens4" >> /etc/network/interfaces

@@ -60,5 +60,15 @@ if [ -z ${DELETE} ]; then
 
 else
 	#it is DELETE operation
-	echo "HNet app configuration delete not implemented !!!"
+
+        zombieD=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -v ${VERBOSE} ${CCIP}"`
+
+        if [ -z ${zombieD} ]; then
+                (>&2 echo "HNet app configuration was already deleted.")
+                exit 0
+        fi
+
+        delete=`kill -9 $zombieD`
+
+        echo "HNet app configuration deleted."
 fi

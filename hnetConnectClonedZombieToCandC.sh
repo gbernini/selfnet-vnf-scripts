@@ -47,11 +47,11 @@ if [ -z ${DELETE} ]; then
 		echo "C&C server subnet ${CCSUB} not needed. HNet VNF is running with a single vNIC"
 	fi
 
-	java -jar /home/nextworks/ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCAPORT} -v ${VERBOSE} ${CCIP} &
+	java -jar /home/nextworks/ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP} &
 
 	sleep 1
 
-	zombie=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCAPORT} -v ${VERBOSE} ${CCIP}"`
+	zombie=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
 
 	if [ -z ${zombie} ]; then
  		(>&2 echo "HNet app configuration failure.")
@@ -61,7 +61,7 @@ if [ -z ${DELETE} ]; then
 else
 	#it is DELETE operation
 
-        zombieD=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCAPORT} -v ${VERBOSE} ${CCIP}"`
+        zombieD=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
 
         if [ -z ${zombieD} ]; then
                 (>&2 echo "HNet app configuration was already deleted.")

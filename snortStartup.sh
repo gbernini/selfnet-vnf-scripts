@@ -64,4 +64,7 @@ echo "10.255.255.129	selfnetmont-dev-evl-kafka.ptin.corppt.com" >> /etc/hosts
 #set hostname for Kafka bus VM into kafka publishing app configuration
 echo -n "selfnetmont-dev-evl-kafka.ptin.corppt.com" >> /home/nextworks/kafkaServer.cfg
 
+#set snort IP to be put in analyzerId field of IDMEF messages 
+echo -n "${ap_provider_net}" >> /home/nextworks/snortIP.cfg
+
 echo "SNORT VNF STARTED"

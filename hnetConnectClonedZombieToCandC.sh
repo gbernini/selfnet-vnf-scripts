@@ -58,6 +58,9 @@ if [ -z ${DELETE} ]; then
 		exit 1
 	fi
 
+	echo "HNet app configured with success."
+	echo "type ${TYPE} freq ${FREQ} bot ${BOT} uid ${ZOMBIEUID} laddress ${honeynet_internal_net} lport ${LOCALPORT} ccip ${CCIP}"
+
 else
 	#it is DELETE operation
 

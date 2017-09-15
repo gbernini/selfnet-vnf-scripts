@@ -64,6 +64,10 @@ if [ -z ${DELETE} ]; then
 else
 	#it is DELETE operation
 
+        if [ -z ${VERBOSE} ]; then
+                VERBOSE=true
+        fi
+
         zombieD=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
 
         if [ -z ${zombieD} ]; then

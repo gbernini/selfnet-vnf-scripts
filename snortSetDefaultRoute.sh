@@ -8,7 +8,7 @@ THIRD_S=$(echo $ap_provider_net| cut -d'.' -f 3)
 GW_DFLT=$FIRST_S.$SECOND_S.$THIRD_S.1
 
 ##check if /etc/network/interfaces has been already tweaked
-if [ grep -Fxq "##DONE##" /etc/network/interfaces ]; then
+if grep "##DONE##" /etc/network/interfaces > /dev/null
 	#do nothing
 	echo "skip"
 else

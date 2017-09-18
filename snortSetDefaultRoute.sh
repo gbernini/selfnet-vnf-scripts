@@ -42,7 +42,7 @@ MGMT_NET_GW=$FIRST.$SECOND.$THIRD.1
 
 echo "Setting route for Kafka bus and github to gateway: $MGMT_NET_GW"
 
-ip route add 10.255.255.129/32 via $MGMT_NET_GW
+ip route add 10.255.255.151/32 via $MGMT_NET_GW
 #ip route add 192.30.252.0/22 via $MGMT_NET_GW
 #ip route add 185.199.108.0/22 via $MGMT_NET_GW
 

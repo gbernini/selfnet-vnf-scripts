@@ -4,7 +4,7 @@ interface=ens3
 
 FIRST_S=$(echo $selfnet_apps| cut -d'.' -f 1)
 SECOND_S=$(echo $selfnet_apps| cut -d'.' -f 2)
-THIRD_S=$(echo $selfnet_Apps| cut -d'.' -f 3)
+THIRD_S=$(echo $selfnet_apps| cut -d'.' -f 3)
 sniffNet=$FIRST_S.$SECOND_S.$THIRD_S.0
 
 echo "GETTING SNIFFING NIC ... "

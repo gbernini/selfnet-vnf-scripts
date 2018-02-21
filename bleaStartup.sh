@@ -1,5 +1,7 @@
 #!/bin/bash
 
+interface=ens4
+
 echo "GETTING BLEA NIC ... "
 for iface in `ls /sys/class/net`; do
         ip=`ifconfig $iface | grep "inet" | grep -v inet6 | awk -F ":" '/addr/ {print $2}'`
@@ -22,6 +24,6 @@ echo -n "selfnetmont-dev-evl-kafka.ptin.corppt.com" >> /home/nextworks/kafkaServ
 
 ping -c 1 -I $interface 10.0.255.1 >> ping.out
 
-sudo python3 ~/url_sniffer/thread_url_sniffer.py --iface ens4 &
+sudo python3 ~/url_sniffer/thread_url_sniffer.py --iface $interface &
 
 echo "BLEA VNF properly started."

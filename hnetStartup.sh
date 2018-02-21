@@ -6,7 +6,7 @@ echo "GETTING HONEYNET NIC ... "
 for iface in `ls /sys/class/net`; do
         ip=`ifconfig $iface | grep "inet" | grep -v inet6 | awk -F ":" '/addr/ {print $2}'`
         ipSecco=`echo $ip | awk '{print $1}'`
-        if [[ ${honeynet_internal_net} == $ipSecco ]]; then
+        if [[ ${selfnet_apps} == $ipSecco ]]; then
                 interface=$iface
         fi
 done

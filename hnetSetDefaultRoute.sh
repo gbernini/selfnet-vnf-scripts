@@ -1,8 +1,8 @@
 #!/bin/bash
 
-FIRST=$(echo $honeynet_internal_net| cut -d'.' -f 1)
-SECOND=$(echo $honeynet_internal_net| cut -d'.' -f 2)
-THIRD=$(echo $honeynet_internal_net| cut -d'.' -f 3)
+FIRST=$(echo $selfnet_apps| cut -d'.' -f 1)
+SECOND=$(echo $selfnet_apps| cut -d'.' -f 2)
+THIRD=$(echo $selfnet_apps| cut -d'.' -f 3)
 
 GW_DFLT=$FIRST.$SECOND.$THIRD.1
 GW_VM=$(ip route | grep "default" | awk ' {print $3}')

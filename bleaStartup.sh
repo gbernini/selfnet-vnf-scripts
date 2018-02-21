@@ -24,6 +24,6 @@ echo -n "selfnetmont-dev-evl-kafka.ptin.corppt.com" >> /home/nextworks/kafkaServ
 
 ping -c 1 -I $interface 10.0.255.1 >> ping.out
 
-sudo python3 ~/url_sniffer/thread_url_sniffer.py --iface $interface &
+python3 /home/nextworks/url_sniffer/thread_url_sniffer.py --iface $interface &
 
 echo "BLEA VNF properly started."

@@ -58,8 +58,8 @@ if [ -z ${DELETE} ]; then
 		exit 1
 	fi
 
+	echo "Started bot emulation: type ${TYPE} freq ${FREQ} bot ${BOT} uid ${ZOMBIEUID} laddress ${selfnet_apps} lport ${LOCALPORT} ccip ${CCIP}"
 	echo "HNet app configured with success."
-	echo "type ${TYPE} freq ${FREQ} bot ${BOT} uid ${ZOMBIEUID} laddress ${selfnet_apps} lport ${LOCALPORT} ccip ${CCIP}"
 
 else
 	#it is DELETE operation
@@ -68,7 +68,7 @@ else
                 VERBOSE=true
         fi
 
-        zombieD=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${honeynet_internal_net} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
+        zombieD=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${selfnet_apps} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
 
         if [ -z ${zombieD} ]; then
                 (>&2 echo "HNet app configuration was already deleted.")
@@ -77,5 +77,6 @@ else
 
         delete=`kill -9 $zombieD`
 
+	echo "Stopped bot emulation: type ${TYPE} freq ${FREQ} bot ${BOT} uid ${ZOMBIEUID} laddress ${selfnet_apps} lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"
         echo "HNet app configuration deleted."
 fi

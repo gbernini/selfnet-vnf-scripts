@@ -1,5 +1,7 @@
 #!/bin/bash
 
+FLOWT_IP="10.255.253.9"
+
 if [ -z ${CID} ]; then
         (>&2 echo "Missing CID parameter")
         exit 1
@@ -50,6 +52,11 @@ if [ -z ${DELETE} ]; then
 	java -jar /home/nextworks/ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${selfnet_apps} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP} &
 
 	sleep 1
+
+	#flowt ip on selfnet_apps
+	ip route add ${CCIP}/32 via $FLOWT_IP
+
+	echo "Added route to CC IP."
 
 	zombie=`pgrep -f "ZombieBot.jar -type ${TYPE} -freq ${FREQ} -bot ${BOT} -uid ${ZOMBIEUID} -laddress ${selfnet_apps} -lport ${LOCALPORT} -v ${VERBOSE} ${CCIP}"`
 
